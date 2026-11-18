@@ -5,7 +5,7 @@ import { DemoBanner } from "./components/layout/DemoBanner.jsx";
 import { Topbar } from "./components/layout/Topbar.jsx";
 import { Sidebar } from "./components/layout/Sidebar.jsx";
 import React, { useState, useRef, useEffect } from "react";
-import { api } from "./lib/api.js";
+import { api, SESSION_EXPIRED } from "./lib/api.js";
 import { Loading } from "./components/ui/Loading.jsx";
 import { Login } from "./features/auth/LoginPage.jsx";
 import { Ctx } from "./context/AppContext.jsx";
@@ -17,7 +17,20 @@ export function App() {
     [mobile, setMobile] = useState(false),
     [toast, setToast] = useState("");
   const [settings, setSettings] = useState({});
+  const [sessionMessage, setSessionMessage] = useState("");
   const timer = useRef();
+  useEffect(() => {
+    const expire = () => {
+      setUser(null);
+      setSettings({});
+      setMobile(false);
+      setToast("");
+      clearTimeout(timer.current);
+      setSessionMessage("Your session has ended. Please sign in again.");
+    };
+    window.addEventListener(SESSION_EXPIRED, expire);
+    return () => window.removeEventListener(SESSION_EXPIRED, expire);
+  }, []);
   useEffect(() => {
     api("/auth/me")
       .then(setUser)
@@ -43,7 +56,9 @@ export function App() {
   if (!user)
     return (
       <Login
+        message={sessionMessage}
         onLogin={(u) => {
+          setSessionMessage("");
           setUser(u);
           setPage("dashboard");
         }}

@@ -6,7 +6,7 @@ import { ErrorBox } from "../../components/ui/ErrorBox.jsx";
 import { Button } from "../../components/ui/Button.jsx";
 import { ArrowUpRight, LockKeyhole } from "lucide-react";
 
-export function Login({ onLogin }) {
+export function Login({ onLogin, message }) {
   const [username, setUsername] = useState("admin"),
     [password, setPassword] = useState(""),
     [error, setError] = useState(""),
@@ -52,12 +52,12 @@ export function Login({ onLogin }) {
             setBusy(true);
             setError("");
             try {
-              onLogin(
-                await api("/auth/login", {
+              await api("/auth/login", {
                   method: "POST",
                   body: { username, password },
-                }),
-              );
+                });
+              // Confirm that the browser retained the session cookie.
+              onLogin(await api("/auth/me"));
             } catch (e) {
               setError(e.message);
             } finally {
@@ -80,7 +80,7 @@ export function Login({ onLogin }) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <ErrorBox error={error} />
+          <ErrorBox error={error || message} />
           <Button disabled={busy} icon={ArrowUpRight}>
             {busy ? "Signing in…" : "Open workspace"}
           </Button>

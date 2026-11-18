@@ -31,6 +31,7 @@ export function Dashboard() {
   const [day, setDay] = useState(today());
   const { data, loading, error } = useData("/dashboard?date=" + day);
   if (loading && !data) return <Loading />;
+  if (error) return <ErrorBox error={error} />;
   const s = data?.summary || {};
   const admin = user.role === "admin" || can(user, "reports");
   const cards = [
