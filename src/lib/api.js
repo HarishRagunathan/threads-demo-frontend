@@ -1,4 +1,7 @@
-export const API = import.meta.env.VITE_API_URL;
+// Production requests stay on the frontend origin; Vercel proxies /api to Render.
+export const API = import.meta.env.PROD
+  ? "/api"
+  : import.meta.env.VITE_API_URL || "/api";
 export const SESSION_EXPIRED = "session-expired";
 
 export async function api(path, options = {}) {
