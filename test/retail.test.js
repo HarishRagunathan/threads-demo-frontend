@@ -13,7 +13,7 @@ import {
 const settings = {
   shop_name: "Thread & Ledger",
   address: "24 Cotton Street, Chennai",
-  mobile: "9000000000",
+  mobile: "9000000001",
   gstin: "DEMO",
   footer: "Thank you for shopping with us.",
   paper: "A4",
