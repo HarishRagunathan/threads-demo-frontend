@@ -1,0 +1,207 @@
+#print-root {
+  display: none;
+}
+.invoice-output-options {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.invoice-output-options .field {
+  margin: 0;
+  min-width: 120px;
+}
+.invoice-output-options p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0;
+}
+.invoice-party {
+  font-size: 12px;
+  line-height: 1.7;
+}
+.barcode-sheet {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4mm;
+}
+.barcode-sticker {
+  padding: 3mm;
+  text-align: center;
+  border: 1px dashed #ccd6cb;
+  break-inside: avoid;
+  background: white;
+  color: #111;
+}
+.barcode-sticker h3 {
+  font-size: 11px;
+  margin: 0 0 4px;
+}
+.barcode-sticker p {
+  font-size: 10px;
+  margin: 3px 0 0;
+}
+.barcode-sticker svg {
+  width: 100%;
+  height: auto;
+  max-height: 24mm;
+}
+.barcode-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+.barcode-preview {
+  max-width: 330px;
+  margin: 20px auto;
+}
+.barcode-label-settings {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.barcode-label-settings .field {
+  max-width: 160px;
+}
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background: white !important;
+  }
+  body[data-printing="true"] > :not(#print-root) {
+    display: none !important;
+  }
+  body > #print-root {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+  }
+  #print-root *,
+  #print-root *::before,
+  #print-root *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  #print-root .print-area {
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border: 0 !important;
+  }
+  #print-root .invoice {
+    font-family: Arial, sans-serif;
+    color: #111;
+  }
+  #print-root .invoice-header {
+    align-items: flex-start;
+    margin-bottom: 5mm;
+  }
+  #print-root .invoice-header h1 {
+    font-size: 20pt;
+  }
+  #print-root .invoice table {
+    table-layout: fixed;
+    font-size: 9pt;
+  }
+  #print-root .invoice td,
+  #print-root .invoice th {
+    padding: 2.5mm 1.5mm;
+    font-size: 8pt;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  #print-root .invoice td:first-child,
+  #print-root .invoice th:first-child {
+    width: 27%;
+  }
+  #print-root .invoice th {
+    color: #333;
+  }
+  #print-root .invoice-summary {
+    margin: 5mm 0 5mm auto;
+    width: 75mm;
+    break-inside: avoid;
+  }
+  #print-root .invoice-footer {
+    break-inside: avoid;
+    padding-top: 4mm;
+  }
+  #print-root table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  #print-root thead {
+    display: table-header-group;
+  }
+  #print-root tr,
+  #print-root .barcode-sticker {
+    break-inside: avoid;
+  }
+  #print-root .search,
+  #print-root .pagination,
+  #print-root button {
+    display: none !important;
+  }
+  #print-root .table-wrap {
+    overflow: visible !important;
+  }
+  #print-root .thermal .invoice-header {
+    display: block;
+  }
+  #print-root .thermal .invoice-header > div:last-child {
+    text-align: left;
+  }
+  #print-root .thermal .invoice-header h1 {
+    font-size: 15pt;
+  }
+  #print-root .thermal .invoice-summary {
+    width: 100%;
+  }
+  #print-root .thermal td,
+  #print-root .thermal th {
+    padding: 1mm 0.4mm;
+    font-size: 6pt;
+  }
+  #print-root .thermal td small {
+    font-size: 5pt;
+  }
+  #print-root .thermal .badge {
+    white-space: normal;
+    font-size: 7pt;
+  }
+  #print-root .barcode-sheet {
+    width: 100%;
+  }
+  #print-root .barcode-sticker svg {
+    max-height: 24mm;
+  }
+}
+
+@media print {
+  #print-root .thermal .receipt-items th:first-child,
+  #print-root .thermal .receipt-items td:first-child {
+    width: 58%;
+  }
+  #print-root .thermal .receipt-items th:nth-child(2),
+  #print-root .thermal .receipt-items td:nth-child(2) {
+    width: 12%;
+  }
+  #print-root .thermal .receipt-items td,
+  #print-root .thermal .receipt-items th {
+    font-size: 8pt;
+  }
+  #print-root .thermal .receipt-items td small {
+    font-size: 7pt;
+  }
+}

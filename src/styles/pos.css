@@ -1,0 +1,111 @@
+.scan-only {
+  grid-template-columns: minmax(0, 1.4fr) minmax(340px, 1fr);
+}
+.billing-product-image {
+  width: 68px;
+  height: 68px;
+  flex: 0 0 68px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #f4f5ee;
+}
+.billing-product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.billing-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 100%;
+  color: #8a9c7d;
+}
+.billing-image-placeholder small {
+  font-size: 9px;
+}
+.billing-product-details {
+  flex: 1;
+  min-width: 0;
+}
+.billing-product-details strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.billing-product-details small {
+  display: block;
+  margin-top: 7px;
+  color: #8a9680;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+.cart-item-title > .icon-button {
+  flex-shrink: 0;
+}
+.scanned-items-body {
+  padding: 0 22px 22px;
+}
+.scanned-items-panel .cart-items {
+  max-height: none;
+  overflow: visible;
+}
+.scanned-items-panel .cart-item {
+  padding: 20px 0;
+}
+.scanned-items-panel .cart-item-title {
+  font-size: 14px;
+}
+.scanned-items-panel .cart-controls {
+  gap: 16px;
+  margin-top: 14px;
+}
+.scanned-items-panel .cart-controls .field {
+  width: 90px;
+}
+.scanned-items-panel .cart-controls .field:first-child {
+  width: 65px;
+}
+.scanned-items-panel .cart-controls input {
+  padding: 9px;
+  font-size: 12px;
+}
+.scanned-items-panel .cart-controls .field span {
+  font-size: 10px;
+}
+.scanned-items-panel .cart-controls > strong {
+  font-size: 15px;
+}
+.payment-default-note {
+  font-size: 11px;
+  color: #628057;
+  background: #f1f6ec;
+  padding: 10px;
+  border-radius: 6px;
+}
+@media (max-width: 1000px) {
+  .scan-only {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 500px) {
+  .scanned-items-body {
+    padding: 0 14px 15px;
+  }
+  .scanned-items-panel .cart-controls {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .scanned-items-panel .cart-controls .field {
+    width: 72px;
+  }
+  .scanned-items-panel .cart-controls .field:first-child {
+    width: 50px;
+  }
+  .scanned-items-panel .cart-controls > strong {
+    font-size: 12px;
+  }
+}

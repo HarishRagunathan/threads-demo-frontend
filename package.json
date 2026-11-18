@@ -1,0 +1,30 @@
+{
+  "name": "textile-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "format": "prettier --write \"src/**/*.{js,jsx,css}\"",
+    "test": "node --test test/*.test.js",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {
+    "jsbarcode": "^3.12.1",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.9",
+    "lucide-react": "^0.511.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5",
+    "prettier": "^3.10.1",
+    "@playwright/test": "^1.65.1",
+    "@zxing/library": "^0.21.3",
+    "pdfjs-dist": "^6.5.438",
+    "dotenv": "^16.5.0"
+  }
+}
